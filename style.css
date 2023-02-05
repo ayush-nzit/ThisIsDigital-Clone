@@ -1,0 +1,1265 @@
+/*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+    overflow: hidden; }
+  
+  html.has-scroll-dragging {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  
+  .has-scroll-smooth body {
+    overflow: hidden; }
+  
+  .has-scroll-smooth [data-scroll-container] {
+    min-height: 100vh; }
+  
+  [data-scroll-direction="horizontal"] [data-scroll-container] {
+    height: 100vh;
+    display: inline-block;
+    white-space: nowrap; }
+  
+  [data-scroll-direction="horizontal"] [data-scroll-section] {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    height: 100%; }
+  
+  .c-scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 11px;
+    height: 100%;
+    transform-origin: center right;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0; }
+    .c-scrollbar:hover {
+      transform: scaleX(1.45); }
+    .c-scrollbar:hover, .has-scroll-scrolling .c-scrollbar, .has-scroll-dragging .c-scrollbar {
+      opacity: 1; }
+    [data-scroll-direction="horizontal"] .c-scrollbar {
+      width: 100%;
+      height: 10px;
+      top: auto;
+      bottom: 0;
+      transform: scaleY(1); }
+      [data-scroll-direction="horizontal"] .c-scrollbar:hover {
+        transform: scaleY(1.3); }
+  
+  .c-scrollbar_thumb {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.5;
+    width: 7px;
+    border-radius: 10px;
+    margin: 2px;
+    cursor: -webkit-grab;
+    cursor: grab; }
+    .has-scroll-dragging .c-scrollbar_thumb {
+      cursor: -webkit-grabbing;
+      cursor: grabbing; }
+    [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+      right: auto;
+      bottom: 0; }
+
+
+
+
+      
+/*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+  overflow: hidden; }
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.has-scroll-smooth body {
+  overflow: hidden; }
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh; }
+
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+  height: 100vh;
+  display: inline-block;
+  white-space: nowrap; }
+
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 100%; }
+
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100%;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0; }
+  .c-scrollbar:hover {
+    transform: scaleX(1.45); }
+  .c-scrollbar:hover, .has-scroll-scrolling .c-scrollbar, .has-scroll-dragging .c-scrollbar {
+    opacity: 1; }
+  [data-scroll-direction="horizontal"] .c-scrollbar {
+    width: 100%;
+    height: 10px;
+    top: auto;
+    bottom: 0;
+    transform: scaleY(1); }
+    [data-scroll-direction="horizontal"] .c-scrollbar:hover {
+      transform: scaleY(1.3); }
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.5;
+  width: 7px;
+  border-radius: 10px;
+  margin: 2px;
+  cursor: -webkit-grab;
+  cursor: grab; }
+  .has-scroll-dragging .c-scrollbar_thumb {
+    cursor: -webkit-grabbing;
+    cursor: grabbing; }
+  [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+    right: auto;
+    bottom: 0; }
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: gilroy;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+}
+#main{
+    overflow: hidden;
+}
+section{
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    position: relative;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 2vw;
+    background-color: #fff;
+}
+.n-left>h2{
+    font-family:cooper black ;
+    font-weight: 500;
+    font-size: 2.2vw;
+    letter-spacing: 1px;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: .3px;
+}
+.n-right{
+    display: flex;
+    align-items: center;
+}
+.n-right>a{
+    text-decoration: none;
+    margin: 0 23px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.747);
+    font-weight: 600;
+}
+.button-1{
+    position: relative;
+    margin-right: -25px;
+    border: 1px solid black;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.button-1>.h5{
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.747);
+    font-weight: 600;
+    padding: 10px 30px;
+    position: relative;
+    z-index: 3;
+}
+.button-1>#green{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #00EB8F;
+    transition: .7s ease;
+}
+.button-1:hover #green{
+    left: 0;
+}
+.photo img{
+    transition: 1s ease;
+}
+.photo img:hover{
+    margin-top: 10px;
+}
+.first{
+    height: 85vh;
+}
+.first #photo-1{
+    position: absolute;
+    left: 7vw;
+    top: 10%;
+    width: 20%;
+}
+.first #photo-1 img{
+    width: 100%;
+}
+.first #photo-2{
+    position: absolute;
+    right: 23vw;
+    top: 20px;
+    width: 17%;
+}
+.first #photo-2 img{
+    width: 100%;
+}
+.first #photo-3{
+    position: absolute;
+    right: 8vw;
+    top: 49%;
+    width: 17%;
+}
+.first #photo-3 img{
+    width: 100%         ;
+}
+.textCont{
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    text-align: center;
+}
+.textCont>p{
+    line-height: 1.3;
+    font-size: 5vw;
+    font-family:'homemade Sausage';
+    text-align: center;
+    font-weight: 100;
+}
+.textCont>p span{
+    font-family:'homemade Sausage';
+    position: relative;
+}
+.textCont>p span::after{
+    content: "";
+    position: absolute;
+    bottom: 1vw;
+    background-image: url(https://thisisdigital.co.uk/dist/images/underline-green.svg);
+    height: 1.2vw;
+    width: 103%;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.textCont #lol {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textCont #lol span{
+    font-size: 28px;
+    font-weight: 800;
+}
+#lol>a{
+    text-decoration: none;
+    margin: 0 23px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.747);
+    font-weight: 600;
+}
+.button-2{
+    position: relative;
+    margin-right: -25px;
+    border: 1px solid black;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.button-2>.h5{
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.747);
+    font-weight: 600;
+    padding: 5px 20px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+.button-2>#green{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #00EB8F;
+    transition: .7s ease;
+}
+.button-2:hover #green{
+    left: 0;
+}
+#two{
+    background-color: black;
+    color: #fff;
+    height:  inherit;
+    padding: 8vw;
+    display: flex;
+    justify-content: center;
+}
+#two-wraper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+}
+.t-head{
+    display: flex;
+    align-items: center;
+}
+.t-head>#point{
+    width: 13px;
+    height: 13px;
+    background-color: #00EB8F;
+    border-radius: 50%;
+    margin: 10px;
+}
+.t-head span{
+    font-size: 19px;
+    font-weight: 500;
+}
+.t-body{
+    font-size: 2.7vw;
+    font-weight: 700;
+    font-family: homemade sausage;
+    text-align: center;
+    margin: 30px 0;
+}
+.t-body>p{
+    font-family: homemade sausage;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+    -webkit-text-stroke-width: .2px;
+}
+.t-body>p span{
+    position: relative;
+    font-family: homemade sausage;
+}
+.t-body>p span::after{
+    content: "";
+    position: absolute;
+    bottom: -20%;
+    background-image: url(https://thisisdigital.co.uk/dist/images/circle-green.svg);
+    height: 140%;
+    width: 120%;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.t-end{
+    display: flex;
+    align-items: center;
+}
+.t-end>span{
+    font-size: 27px;
+    font-weight: 700;
+}
+.t-end>a{
+    text-decoration: none;
+    margin: 0 23px;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 600;
+}
+.button-3{
+    position: relative;
+    margin-right: -25px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.button-3>.h5{  
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 600;
+    padding: 6px 25px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+.button-3>#green{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #00EB8F;
+    transition: .7s ease;
+}
+.button-3:hover #green{
+    left: 0;
+}
+.two{
+    background-color: #fff;
+    position: relative;
+}
+#box{
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    background-color: rgb(73, 89, 89);
+}
+#three{
+    display: flex;
+    height: initial;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8vw;
+}
+.th-left{
+    width: 49vw;
+    display: flex;
+}
+.photo-left{
+    display: flex;
+    flex-direction: column;
+    width:11.6vw;
+}
+.photo-right{
+    display: flex;
+    flex-direction: column;
+    width:36vw;
+}
+.right-top,.right-bott,.right-top>img,.right-bott>img{
+    width: 100%;
+    margin-bottom: 1.2VW;
+    margin-left: 1.2VW;
+}
+.left-top,.left-bott,.left-top>img, .left-bott>img{
+    width: 100%;
+    margin-bottom: 1.2VW;
+    
+}
+.right-top,.right-top>img{
+    width: 85%;
+    margin-bottom: 1.2vw;
+}
+.th-right{
+    width: 51vw;
+    padding-left: 7vw;
+    margin-bottom: 60px;
+}
+.th-right>h1{
+    font-size: 3.7vw;
+    font-family: homemade sausage;
+    line-height: 1.7;
+    margin: 30px 0;
+}
+.th-right h1 span{
+    font-family: homemade sausage;
+    position: relative;
+}
+.th-right h1 span::after{
+    content: "";
+    position: absolute;
+    bottom: .4vw;
+    background-image: url(https://thisisdigital.co.uk/dist/images/underline-green.svg);
+    height: 1.3vw;
+    width: 105%;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.th-right>p{
+    line-height: 2;
+    font-size: 17px;
+    font-weight: 600;
+    opacity: .8;
+    width: 90%;
+}
+.th-inline{
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+.th-inline>.img{
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(186, 224, 224, 0.865);
+}
+.th-inline img{
+    width: 100%;
+    height: 100%;
+}
+.th-end{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.th-end>span{
+    margin-left: 20px;
+    font-size: 27px;
+    font-weight: 700;
+}
+.th-end>a{
+    text-decoration: none;
+    margin: 0 23px;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 600;
+}
+.button-4{
+    position: relative;
+    margin-right: -25px;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.button-4>.h5{   
+    color: rgba(0, 0, 0, 0.747);
+    font-weight: 600;
+    padding: 6px 25px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+.button-4>#green{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #00EB8F;
+    transition: .7s ease;
+}
+.button-4:hover #green{
+    left: 0;
+}
+.four{
+    height: fit-content;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5vw;
+}
+.f-head>h1{
+    font-size: 3.4vw;
+    font-family: homemade sausage;
+    text-align: center;
+    word-spacing: 5px;
+}
+.f-head>h1 span{
+    position: relative;
+    font-family: homemade sausage;
+}
+.f-head>h1 span::after{
+    content: "";
+    position: absolute;
+    bottom: -5%;
+    background-image: url(https://thisisdigital.co.uk/dist/images/circle-green.svg);
+    height: 120%;
+    width: 120%;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.f-container{
+    display: flex;   
+    align-items: center;
+    flex-direction: column;
+    margin: 7vw 9vw;
+}
+.row-con{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.elm{
+    display: flex;    
+    padding: 4vw 2vw;
+}
+.elm img{
+    width: 100px;
+}
+.f-bottom{
+    display:flex ;
+    justify-content: center;   
+}
+.f-bottom>img{
+    width: 140px;
+    margin-top: 20px;
+}
+.five{
+    height: 100vh;
+    display: flex;
+    padding: 7vw;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+.f-wraper{
+    overflow: hidden;
+    width: 50%;
+    height: 33vw;
+    margin: 20px;
+    position: relative;
+}
+.base-wrap{
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(rgba(0, 0, 0, 0) , rgba(0, 0, 0, 0.921)); 
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 35px;
+}
+.five-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;  
+    z-index: 0;
+    transition: .7s ease;
+}.f-wraper:hover .five-bg{
+    transform: scale(1.1);
+}
+.five-left{
+    background-size: cover;
+    background-image: url(https://optimise2.assets-servd.host/squalid-loris/production/uploads/images/work/Golf.jpeg?w=1200&h=675&q=80&fm=webp&fit=crop&fp-x=0.5&fp-y=0.5&dm=1635867985&s=727b762303e46062ebfebf9a3fbf86e2);
+}
+.five-right{
+    background-size: cover;
+    background-image: url(https://optimise2.assets-servd.host/squalid-loris/production/uploads/images/work/work-thumbnail-03.jpg?w=1200&h=675&q=80&fm=webp&fit=crop&fp-x=0.5&fp-y=0.5&dm=1627573623&s=b7070d5239bcfbe21f47b6e42d04043d);
+}
+.top-img{
+    width: 10rem;
+}
+.top-img>img{
+    width: 100%;   
+}
+.body-head>h1{
+    font-family:'homemade Sausage';
+    font-size: 2.575vw;
+    color: rgb(255, 255, 255);
+    line-height: 1.25;
+    word-spacing: 6px;
+    font-weight: 300;
+    margin-top: 70px;
+}
+.inline-button{
+    display: flex;
+    align-items: center;
+}
+.inline-button>span{
+    font-size: 27px;
+    font-weight: 700;
+    color: #fff;
+}
+.inline-button>a{
+    text-decoration: none;
+    margin: 0 23px;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 600;
+}
+.button-5{
+    position: relative;
+    margin-right: -25px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.button-5>.h5{
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 600;
+    padding: 6px 25px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+.button-5>#green{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #00EB8F;
+    transition: .7s ease;
+}
+.f-wraper:hover #green{
+    left: 0;
+}
+.inline-button-6{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.inline-button-6>span{
+    margin-left: 20px;
+    font-size: 27px;
+    font-weight: 700;
+}
+.inline-button-6>a{
+    text-decoration: none;
+    margin: 0 23px;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 600;
+}
+.button-6{
+    position: relative;
+    margin-right: -25px;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.button-6>.h5{
+    color: rgba(0, 0, 0, 0.747);
+    font-weight: 600;
+    padding: 6px 25px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+.button-6>#green{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #00EB8F;
+    transition: .7s ease;
+}
+.button-6:hover #green{
+    left: 0;
+}
+.five-s-ph{
+    width: 50px;
+    height: 50px;
+    background-color:#DBEAFE;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.five-s-ph>#photo{
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    background-image: url(https://optimise2.assets-servd.host/squalid-loris/production/uploads/images/team/Team-Transparent/Demie-Loizou-1.png?w=400&h=400&q=80&fm=webp&fit=crop&fp-x=0.5&fp-y=0.5&dm=1638459673&s=d95f4d84ca3dc1bf7c15f06aed800740);
+}
+
+
+/* slider code from here */
+.swiper {
+    width: 100%;
+    height: fit-content;
+    padding: 8vw 0;
+  
+}
+.swiper-slide {
+  text-align: center;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-slide{
+  display: flex;
+  flex-direction: column;
+}
+.swiper-slide>.six-swip-ph{
+  width: 130px;
+}
+.swiper-slide>h1{
+  font-size: 3.7vw;
+  width: 70vw;
+  padding: 4vw 0;
+  line-height: 1.3;
+}
+.six-bo-first{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.six-bo-first>#dot{
+  width: 15px;
+  height: 15px;
+  background-color: #00EB8F;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+.six-bo-sec>p{
+  font-weight: 600;
+  opacity: .6;
+  margin: 10px 0;
+}
+.seven{
+  margin-top: 220px;
+  height: 100vh;
+  position: relative;
+  background-color: black;
+  color: #fff;
+  padding: 10vw 0;
+  margin-bottom: 93px;
+}
+#overflow{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 66.6%;
+    background-image: url(https://optimise2.assets-servd.host/squalid-loris/production/uploads/images/This-is-digital-LOW-RES-239.jpg?w=1200&h=394&q=80&fm=webp&fit=crop&fp-x=0.5&fp-y=0.5&dm=1631002673&s=a8225dd79a8eb0d05ce0db6b2a5efd03);
+    z-index: 10 ;
+    background-size: cover;
+    background-position: center;
+}
+.wrap-overflow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 8.5%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.621);
+}
+.wrap-overflow>h2{
+    font-size: 28px;
+    line-height: 1.4;
+}
+.wrap-overflow>h2>span{
+    position: relative;
+}
+.wrap-overflow>h2>span::after{
+    content: "";
+    width: 105%;
+    height: 7px;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    background-image: url(https://thisisdigital.co.uk/dist/images/underline-green.svg);
+}
+.inline-button-7{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+.inline-button-7>span{
+    margin-left: 20px;
+    font-size: 27px;
+    font-weight: 700;
+}
+.inline-button-7>a{
+    text-decoration: none;
+    margin: 0 23px;
+    font-size: 19px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+.button-7{
+    position: relative;
+    margin-right: -25px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.button-7>.h5{   
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 600;
+    padding: 9px 25px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+.button-7>#green{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #00EB8F;
+    transition: .7s ease;
+}
+.button-7:hover #green{
+    left: 0;
+}
+.seven-s-ph{
+    width: 50px;
+    height: 50px;
+    background-color:#DBEAFE;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.seven-s-ph>#photo{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: url(https://optimise2.assets-servd.host/squalid-loris/production/uploads/images/team/Team-Transparent/Demie-Loizou-1.png?w=400&h=400&q=80&fm=webp&fit=crop&fp-x=0.5&fp-y=0.5&dm=1638459673&s=d95f4d84ca3dc1bf7c15f06aed800740);
+}
+.inline-button-8{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px
+}
+.inline-button-8>span{
+    margin-left: 20px;
+    font-size: 22px;
+    font-weight: 700;
+}
+.inline-button-8>a{
+    text-decoration: none;
+    margin: 0 23px;
+    font-size: 19px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+.button-8{
+    position: relative;
+    margin-right: -25px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.button-8>.h5{ 
+    color: rgba(255, 255, 255, 0.747);
+    font-weight: 600;
+    padding: 9px 25px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+}
+.button-8>#green{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: .7s ease;
+}
+.button-8:hover #green{
+    left: 0;
+}
+.sev-col1{
+    width: 24%;
+}
+.sev-col1>h1{
+   font-size: 2.7vw;
+     
+    margin-left: 30px;
+}
+.sev-col>h1>span{
+    position: relative;
+}
+.sev-col>h1>span::after{
+    content: "";
+    width: 120%;
+    height:130%;
+    position: absolute;
+    bottom: -10px;
+    left: -15px;
+    background-image: url(https://thisisdigital.co.uk/dist/images/circle-green.svg);
+}
+.seven-cover{
+    padding: 100px 8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.sev-col{
+    display: flex;
+    flex-direction: column;  
+}
+.wrap-about-main{
+    display: flex;   
+    width: 70%;
+    justify-content: space-between;
+}
+.wrap-about{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.sev-col>h3{
+    font-size: 24px;
+    margin: 10px 0;
+}
+.sev-col>p{
+    margin: 5px 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+.sev-col5{
+    width: 110px;
+    margin: 20px 0;
+}
+.sev-col5>img{
+    width: 80px;
+    margin: 15px 0;
+}
+.seven-footer{
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    align-items: center;
+    padding: 30px;
+    margin: 0 35px;
+    border-top: 1px solid white;
+}
+.footer-right{
+    display: flex;
+    align-items: center;
+}
+.footer-right>p{
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 20px;
+}
+.footer-right>a{
+    color: rgba(255, 255, 255, 0.812);
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 10px;
+    text-decoration: none;
+}
+.footer-right>a>span{
+    border-bottom: .5px solid white;
+}
+.footer-right>a>i{
+    font-size: 22px;
+
+}
+.blank{
+    /* height: 10vw; */
+    overflow: hidden;
+}
+
+@media (max-width:1000px) {
+     
+    .first #photo-1{
+        width:41% ;
+        left: 0;
+    }
+    .first #photo-2{
+        width: 27%;
+        left: 60%;
+    }
+    .first #photo-3{
+        width: 27%;
+        right: 0;
+    }
+    .f-wraper{
+        height: 40vw;
+    }
+    .seven{
+        padding-bottom: 100px ;
+    }
+    .seven-cover{
+        flex-direction: column-reverse;
+        align-items: center;     
+    }
+    .sev-col1{
+        margin-bottom: 50px;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 100px;
+    }
+    .wrap-about-main{
+        flex-direction: column;
+        width: 100%      ;
+    }
+    .sev-col5{
+        flex-direction: row;
+        justify-content: space-between;     
+        width: 100%;
+    }
+    .icon,.xyz{
+        display: none;
+    }
+    .footer-right{
+        width: 100%;
+       justify-content: center;
+    }
+}
+@media (max-width:765px) {
+
+    .textCont #lol span,
+    .t-end>span,
+    .th-end>span,
+    .inline-button>span,
+    .inline-button-6>span,
+    .inline-button-7>span,
+    .inline-button-8>span
+    {
+        font-size: 15px;
+        
+    }
+
+    #lol>a,
+    .t-end>a,
+    .th-end>a,
+    .inline-button>a,
+    .inline-button-6>a,
+    .inline-button-7>a,
+    .inline-button-8>a
+    {
+        font-size: 15px;
+    } 
+    .n-left>h2{
+        font-size: 28px;
+    }
+    .n-right{
+        display: none;
+    }
+    .first{
+        padding: 20px 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        height: fit-content;
+    }
+    .photo-wraper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-content: center;
+    }
+    #photo-2,#photo-3{
+        display: none;
+    }
+    .first #photo-1{
+        margin-top: 50px;
+        width: 80%;
+        position: initial;
+    }
+    .textCont{
+        position: initial;
+        margin-top: 20px;
+        
+        transform: none;
+        margin-bottom: 20px;
+        width: fit-content;
+    }
+    .button-2>.h5{
+        font-size: 17px;
+    }
+    #two-wraper{
+        width: 100%;
+    }
+    .t-body{
+        font-size: 3vw;
+        width: 100%;
+    }
+    
+    #three{
+        display:flex;
+        flex-direction: column;
+        align-items: center ;
+    }
+    .th-left{
+        align-self: flex-start;
+        width: 80%;
+    }
+    .photo-left{        
+        width:18.6vw;
+    }
+    .photo-right{      
+        width:61vw;
+    } 
+    
+    .th-right{
+        width: 90vw;      
+    }
+    .th-right>h1{
+        text-align: center;
+        font-size: 4vw;
+    }
+    .five{
+        flex-direction: column;
+        padding: 10vw 0;
+    }
+    .f-wraper{
+        width: 90%;
+    }
+    .f-wraper{
+        height: 450px;
+    }
+    .inline-button-6{
+        bottom: 0;
+    }
+    .swiper {
+        padding: 15vw 0;
+    }
+    .seven{
+
+        margin-top: 100px;
+    }
+    .wrap-overflow>h2{
+        font-size: 20px;
+        line-height: 1.2;
+    }
+    .sev-col1>h1{
+        font-size: 5vw;
+    }
+}
